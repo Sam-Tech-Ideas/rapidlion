@@ -3,6 +3,7 @@ import { FaTimes } from "react-icons/fa";
 import { BiMenuAltRight } from "react-icons/bi";
 import { useState } from "react";
 import image1 from '../assets/for.png'
+import { Link } from "react-router-dom";
 const Navbar = () => {
   const [nav, setNav] = useState(false);
   const links = [
@@ -18,10 +19,7 @@ const Navbar = () => {
       id: 3,
       link: "Services",
     },
-    {
-      id: 4,
-      link: "Contact Us",
-    },
+   
   ];
   return (
     <div className=" w-screen  h-20 text-black    bg-yellow-300">
@@ -40,13 +38,13 @@ const Navbar = () => {
           ))}
         </ul>
         <div className="hidden md:flex mr-[126px]">
-          <a
-            href="mailto:axestech1@gmail.com"
+          <Link
+          to={"/contact"}
             className=" hover:text-white px-6   bg-black py-2 rounded text-white"
             target="_blank"
           >
             Contact Us
-          </a>
+          </Link>
         </div>
 
         <div

@@ -14,8 +14,6 @@ const About = () => {
       
       <p class="text-sm mt-2 text-gray-500 mb-8 w-full">Neutra shabby chic ramps, viral fixie.</p>
       <div class="flex lg:flex-row md:flex-col">
-       
-       
       </div>
     </div>
     <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
