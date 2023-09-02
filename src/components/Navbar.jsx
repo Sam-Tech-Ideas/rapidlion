@@ -1,102 +1,123 @@
-import React from "react";
-import { FaTimes } from "react-icons/fa";
-import { BiMenuAltRight } from "react-icons/bi";
-import { useState } from "react";
-import image1 from '../assets/for.png'
-import { Link } from "react-router-dom";
+
+import React, { useEffect, useState } from "react";
+import { FaBars, FaTimes } from "react-icons/fa";
+import { Link, useNavigate } from "react-router-dom";
+import logo from "../assets/for.png"
+
+
 const Navbar = () => {
   const [nav, setNav] = useState(false);
+
+
   const links = [
     {
       id: 1,
-      link: "Home",
+      link: "/",
+      name: "Home",
     },
     {
       id: 2,
-      link: "About Us",
+      link: "/services",
+      name: "Services",
     },
     {
       id: 3,
-      link: "Services",
+      link: "/contact",
+      name: "Contact",
     },
-   
+    {
+      id: 4,
+      link: "/products",
+      name: "Products",
+    },
+
   ];
+
+ 
   return (
-    <div className=" w-screen  h-20 text-black    bg-yellow-300">
-      <div className="flex items-center justify-between w-full h-full px-3">
-        <div className="flex items-center pt-[40px] pb-10">
-          <img src={image1} alt="" height="" width="" className="w-[72px] " />
+    <div className=" fixed bg-white w-screen h-20 z-20 text-gray-600 shadow-sm">
+      <div className="px-3 flex items-center justify-around w-full h-full">
+        <div className="flex items-center">
+          <h3 className="text-2xl font-semibold">
+            <img
+              src={logo}
+              className="w-20 h-10 bg-cover bg-center"
+              alt="logo"
+            />
+          </h3>
         </div>
         <ul className="hidden md:flex">
-          {links.map(({ id, link }) => (
+          {links.map(({ id, link, name }) => (
             <li
               key={id}
-              className="px-4 py-3 hover:border-b-2 hover:border-b-gray-900   hover:text-black duration-300 text-xl cursor-pointer"
+              className="capitalize p-4 cursor-pointer hover:text-pink-700 duration-300"
             >
-              {link}
+              <Link to={link}>
+                <span>{name}</span>
+              </Link>
             </li>
           ))}
         </ul>
-        <div className="hidden md:flex mr-[126px]">
-          <Link
-          to={"/contact"}
-            className=" hover:text-white px-6   bg-black py-2 rounded text-white"
-            target="_blank"
-          >
-            Contact Us
-          </Link>
-        </div>
 
-        <div
-          className=" md:hidden cursor-pointer p-3"
-          onClick={() => {
-            setNav(true);
-          }}
-        >
-          <BiMenuAltRight size={30} />
+        <div className="hidden md:flex mr-4"></div>
+        {/**Burger icon */}
+        <div className=" md:hidden">
+          <div onClick={() => setNav(true)} className="cursor-pointer p-3">
+            <FaBars size={30} />
+          </div>
         </div>
       </div>
-
-      {/**menu */}
+      {/**Mobile menu */}
       <div
         className={
           nav
-            ? "md:hidden fixed left-0 top-0 w-full h-full bg-gray-600/70 backdrop-blur z-50 "
+            ? "md:hidden fixed left-0 top-0 w-full h-full bg-gray-900/70 backdrop-blur"
             : ""
         }
       >
         <div
           className={
             nav
-              ? "shadow-xl fixed left-0 top-0 w-4/5 bg-black text-white h-full z-50  p-10 ease-in duration-300"
+              ? "shadow-xl fixed left-0 top-0 w-4/5 bg-gray-300  h-full p-10 ease-in duration-300"
               : "fixed top-0 left-[-100%] p-10 duration-300 ease-in h-full "
           }
         >
-          <div className="flex items-center justify-between w-full text-white">
-            <h1 className="text-lg text-black "></h1>
-
-            <div onClick={() => setNav(false)} className="cursor-pointer p-3">
-              <FaTimes size={30} />
+          <div className="flex w-full items-center justify-between text-white">
+            <img
+              src={logo}
+              className="w-20 h-10 bg-cover bg-center"
+              alt="logo"
+            />
+            <div onClick={() => setNav(false)} className="p-3 cursor-pointer">
+              <FaTimes size={30} color="black" />
             </div>
           </div>
-          <ul className="pt-10">
-            {links.map(({ id, link }) => (
-              <li
-                key={id}
-                className="p-4 hover:text-blue-600 duration-300 text-lg cursor-pointer"
-              >
-                {link}
-              </li>
-            ))}
-          </ul>
-          <div>
-            <a
-              href="mailto:axestech1@gmail.com"
-              target="_blank"
-              className="bg-blue-600 w-full ml-3 rounded-md hover:bg-blue-800 px-4 py-2"
-            >
-              Contact Us
-            </a>
+          <div className="">
+            <h1 className="text-red-500 text-lg"></h1>
+            <ul className="pt-7 pb-6">
+              <div>
+                {links.map(({ id, link, name }) => (
+                  <li
+                    key={id}
+                    className="capitalize p-4 cursor-pointer hover:text-pink-700 duration-300"
+                  >
+                    <Link to={link}>
+                      <span>{name}</span>
+                    </Link>
+                  </li>
+                ))}
+              </div>
+             
+              {/* <a href="#blog">
+                {" "}
+                <li className="p-4  text-xl   hover:border-b-2 ">
+                  How it works
+                </li>
+              </a> */}
+            </ul>
+            <div className=" ml-4 ">
+              <ul></ul>
+            </div>
           </div>
         </div>
       </div>
