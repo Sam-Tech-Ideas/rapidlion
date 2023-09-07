@@ -1,10 +1,10 @@
 import React from "react"
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Contact from "./components/Contact";
 import Home from "./components/Home";
 import Products from "./pages/Products";
-import About from "./components/About";
 import Services from "./components/Services";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
 function App() {
 
 
