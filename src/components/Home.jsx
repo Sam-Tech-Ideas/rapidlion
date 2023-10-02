@@ -8,14 +8,14 @@ import Contact from "./Contact";
 import { FaWhatsapp } from "react-icons/fa";
 import Hero from "./Hero";
 import { Content } from "./Content";
+import CaroHero from "./CaroHero";
 
 const Home = () => {
   return (
     <div>
       <Navbar />
-      <Hero/>
-    
 
+        <CaroHero />
       <About />
       <Content />
       <Contact />
